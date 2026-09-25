@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Productos registrados
+{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <h2>Productos registrados</h2>
+
+    <a href="{% url 'nuevo_producto' %}" class="boton">
+        Registrar producto
+    </a>
+
+    {% if productos %}
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for producto in productos %}
+
+                    <tr>
+                        <td>{{ producto.nombre }}</td>
+
+                        <td>{{ producto.categoria }}</td>
+
+                        <td>${{ producto.precio }}</td>
+
+                        <td>{{ producto.cantidad }}</td>
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% else %}
+
+        <div class="mensaje">
+            <p>Todavía no hay productos registrados.</p>
+
+            <p>
+                Utiliza el botón "Registrar producto"
+                para agregar el primero.
+            </p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
