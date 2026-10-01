@@ -31,6 +31,42 @@ def nuevo_producto(request):
     )
 
 
+def editar_producto(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+
+    if request.method == 'POST':
+        formulario = ProductoForm(request.POST, instance=producto)
+
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('lista_productos')
+    else:
+        formulario = ProductoForm(instance=producto)
+
+    return render(
+        request,
+        'editar_producto.html',
+        {
+            'formulario': formulario,
+            'producto': producto,
+        }
+    )
+
+
+def eliminar_producto(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+
+    if request.method == 'POST':
+        producto.delete()
+        return redirect('lista_productos')
+
+    return render(
+        request,
+        'eliminar_producto.html',
+        {'producto': producto}
+    )
+
+
 def lista_categorias(request):
     categorias = Categoria.objects.all().order_by('id')
 
