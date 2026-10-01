@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
-from .models import Producto
-from .forms import ProductoForm
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .forms import CategoriaForm, ProductoForm
+from .models import Categoria, Producto
 
 
 def lista_productos(request):
@@ -14,14 +15,12 @@ def lista_productos(request):
 
 
 def nuevo_producto(request):
-
     if request.method == 'POST':
         formulario = ProductoForm(request.POST)
 
         if formulario.is_valid():
             formulario.save()
             return redirect('lista_productos')
-
     else:
         formulario = ProductoForm()
 
@@ -29,4 +28,67 @@ def nuevo_producto(request):
         request,
         'nuevo_producto.html',
         {'formulario': formulario}
+    )
+
+
+def lista_categorias(request):
+    categorias = Categoria.objects.all().order_by('id')
+
+    return render(
+        request,
+        'lista_categorias.html',
+        {'categorias': categorias}
+    )
+
+
+def nueva_categoria(request):
+    if request.method == 'POST':
+        formulario = CategoriaForm(request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('lista_categorias')
+    else:
+        formulario = CategoriaForm()
+
+    return render(
+        request,
+        'nueva_categoria.html',
+        {'formulario': formulario}
+    )
+
+
+def editar_categoria(request, pk):
+    categoria = get_object_or_404(Categoria, pk=pk)
+
+    if request.method == 'POST':
+        formulario = CategoriaForm(request.POST, instance=categoria)
+
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('lista_categorias')
+    else:
+        formulario = CategoriaForm(instance=categoria)
+
+    return render(
+        request,
+        'editar_categoria.html',
+        {
+            'formulario': formulario,
+            'categoria': categoria,
+        }
+    )
+
+
+def eliminar_categoria(request, pk):
+    categoria = get_object_or_404(Categoria, pk=pk)
+
+    if request.method == 'POST':
+        categoria.delete()
+        return redirect('lista_categorias')
+
+    return render(
+        request,
+        'eliminar_categoria.html',
+        {'categoria': categoria}
     )
