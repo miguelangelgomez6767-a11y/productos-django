@@ -1,4 +1,9 @@
+<!-- ===================================================== -->
+<!-- Plantilla: eliminar_producto.html -->
+<!-- Esta página utiliza Django Templates para mostrar datos. -->
+<!-- ===================================================== -->
 {% extends 'base.html' %}
+<!-- Heredamos la estructura y los estilos definidos en base.html. -->
 
 {% block title %}
 Eliminar producto
@@ -14,7 +19,7 @@ Eliminar producto
     <p class="texto-ayuda">Esta acción no se puede deshacer.</p>
 
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Protección CSRF para formularios enviados por POST. -->
 
         <div class="acciones" style="justify-content: center;">
             <button type="submit" class="boton boton-peligro">

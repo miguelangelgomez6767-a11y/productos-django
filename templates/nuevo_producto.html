@@ -1,4 +1,9 @@
+<!-- ===================================================== -->
+<!-- Plantilla: nuevo_producto.html -->
+<!-- Esta página utiliza Django Templates para mostrar datos. -->
+<!-- ===================================================== -->
 {% extends 'base.html' %}
+<!-- Heredamos la estructura y los estilos definidos en base.html. -->
 
 {% block title %}
 Registrar producto
@@ -11,8 +16,9 @@ Registrar producto
     <h2>Registrar nuevo producto</h2>
 
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Protección CSRF para formularios enviados por POST. -->
 
+        <!-- Django genera aquí los campos del formulario automáticamente. -->
         {{ formulario.as_p }}
 
         <div class="acciones">

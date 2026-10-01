@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Ruta absoluta de la carpeta principal del proyecto.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -20,16 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# Clave utilizada por Django para seguridad y sesiones. En producción debe mantenerse privada.
 SECRET_KEY = 'django-insecure-4j#9%$q%b&d^f6(da5+ifgw#_l*th0l7akkp58=8spd=&m-ap)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Modo de depuración. Debe ser False en un servidor de producción.
 DEBUG = True
 
+# Dominios o direcciones permitidas para recibir solicitudes.
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
+# Aplicaciones instaladas y necesarias para el proyecto.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'productos',
 ]
 
+# Middleware: componentes que procesan las solicitudes y respuestas de Django.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,8 +56,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Archivo que contiene las rutas principales del proyecto.
 ROOT_URLCONF = 'tienda.urls'
 
+# Configuración del motor de plantillas HTML.
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -67,12 +75,14 @@ TEMPLATES = [
     },
 ]
 
+# Aplicación WSGI utilizada por servidores compatibles con WSGI.
 WSGI_APPLICATION = 'tienda.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+# Configuración de la base de datos. Este proyecto utiliza SQLite.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -84,6 +94,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
 
+# Validadores de contraseñas proporcionados por Django.
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -103,6 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
+# Idioma y zona horaria utilizados por el proyecto.
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -115,12 +127,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
+# URL base para archivos estáticos como CSS, JavaScript e imágenes.
 STATIC_URL = 'static/'
 
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
+# Configuración del correo. En desarrollo los mensajes se muestran en la consola.
 MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',

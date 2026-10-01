@@ -1,4 +1,9 @@
+<!-- ===================================================== -->
+<!-- Plantilla: eliminar_categoria.html -->
+<!-- Esta página utiliza Django Templates para mostrar datos. -->
+<!-- ===================================================== -->
 {% extends 'base.html' %}
+<!-- Heredamos la estructura y los estilos definidos en base.html. -->
 
 {% block title %}
 Eliminar categoría
@@ -16,7 +21,7 @@ Eliminar categoría
     </p>
 
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Protección CSRF para formularios enviados por POST. -->
 
         <div class="acciones">
             <button type="submit" class="boton boton-peligro">

@@ -1,16 +1,11 @@
-"""
-WSGI config for tienda project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/6.1/howto/deployment/wsgi/
-"""
-
+# Configuración WSGI para ejecutar Django con servidores compatibles con WSGI.
 import os
 
 from django.core.wsgi import get_wsgi_application
 
+
+# Indicamos dónde se encuentra la configuración principal del proyecto.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tienda.settings')
 
+# Creamos la aplicación WSGI que utilizará el servidor.
 application = get_wsgi_application()

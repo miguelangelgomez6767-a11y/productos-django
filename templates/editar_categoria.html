@@ -1,4 +1,9 @@
+<!-- ===================================================== -->
+<!-- Plantilla: editar_categoria.html -->
+<!-- Esta página utiliza Django Templates para mostrar datos. -->
+<!-- ===================================================== -->
 {% extends 'base.html' %}
+<!-- Heredamos la estructura y los estilos definidos en base.html. -->
 
 {% block title %}
 Modificar categoría
@@ -11,8 +16,9 @@ Modificar categoría
     <h2>Modificar categoría</h2>
 
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Protección CSRF para formularios enviados por POST. -->
 
+        <!-- Django genera aquí los campos del formulario automáticamente. -->
         {{ formulario.as_p }}
 
         <div class="acciones">

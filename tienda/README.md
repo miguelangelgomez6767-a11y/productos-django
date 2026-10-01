@@ -1,4 +1,7 @@
-# Sistema de Productos
+# Proyecto Django - Sistema de Productos
+
+<!-- Los comentarios agregados al código explican la función de cada sección. -->
+
 
 Aplicación web desarrollada con Django para registrar y consultar productos y gestionar categorías.
 

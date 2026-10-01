@@ -1,11 +1,17 @@
+<!-- ===================================================== -->
+<!-- Plantilla: base.html -->
+<!-- Esta página utiliza Django Templates para mostrar datos. -->
+<!-- ===================================================== -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos básicos para que la página sea adaptable a diferentes dispositivos. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{% block title %}Sistema de Productos{% endblock %}</title>
 
+    <!-- Estilos generales de toda la aplicación. -->
     <style>
         * {
             box-sizing: border-box;
@@ -225,6 +231,7 @@
 
 <body>
 
+    <!-- Encabezado principal y menú de navegación. -->
     <header>
         <h1>Sistema de Productos</h1>
 
@@ -235,11 +242,13 @@
         </nav>
     </header>
 
+    <!-- Contenido específico de cada página hija. -->
     <main>
         {% block contenido %}
         {% endblock %}
     </main>
 
+    <!-- Pie de página común para todas las vistas. -->
     <footer>
         <p>Sistema de productos - Django</p>
     </footer>

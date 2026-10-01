@@ -1,4 +1,9 @@
+<!-- ===================================================== -->
+<!-- Plantilla: editar_producto.html -->
+<!-- Esta página utiliza Django Templates para mostrar datos. -->
+<!-- ===================================================== -->
 {% extends 'base.html' %}
+<!-- Heredamos la estructura y los estilos definidos en base.html. -->
 
 {% block title %}
 Editar producto
@@ -12,8 +17,9 @@ Editar producto
     <p class="texto-ayuda">Modifica la información de <strong>{{ producto.nombre }}</strong>.</p>
 
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Protección CSRF para formularios enviados por POST. -->
 
+        <!-- Django genera aquí los campos del formulario automáticamente. -->
         {{ formulario.as_p }}
 
         <div class="acciones">

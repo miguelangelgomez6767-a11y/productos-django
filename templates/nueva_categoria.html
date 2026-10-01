@@ -1,4 +1,9 @@
+<!-- ===================================================== -->
+<!-- Plantilla: nueva_categoria.html -->
+<!-- Esta página utiliza Django Templates para mostrar datos. -->
+<!-- ===================================================== -->
 {% extends 'base.html' %}
+<!-- Heredamos la estructura y los estilos definidos en base.html. -->
 
 {% block title %}
 Nueva categoría
@@ -11,8 +16,9 @@ Nueva categoría
     <h2>Registrar nueva categoría</h2>
 
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Protección CSRF para formularios enviados por POST. -->
 
+        <!-- Django genera aquí los campos del formulario automáticamente. -->
         {{ formulario.as_p }}
 
         <div class="acciones">
