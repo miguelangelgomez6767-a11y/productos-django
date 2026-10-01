@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Nueva categoría
+{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor formulario-contenedor">
+
+    <h2>Registrar nueva categoría</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ formulario.as_p }}
+
+        <div class="acciones">
+            <button type="submit" class="boton">
+                Guardar categoría
+            </button>
+
+            <a href="{% url 'lista_categorias' %}" class="boton boton-secundario">
+                Cancelar
+            </a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

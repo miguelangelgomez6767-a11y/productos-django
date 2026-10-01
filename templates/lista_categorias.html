@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Categorías
+{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <div class="encabezado-seccion">
+        <div>
+            <h2>Categorías</h2>
+            <p class="texto-ayuda">Registra, modifica y elimina las categorías de la tienda.</p>
+        </div>
+
+        <a href="{% url 'nueva_categoria' %}" class="boton">
+            Nueva categoría
+        </a>
+    </div>
+
+    {% if categorias %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Observaciones</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for categoria in categorias %}
+                    <tr>
+                        <td>{{ categoria.nombre }}</td>
+                        <td>{{ categoria.observaciones|default:"Sin observaciones" }}</td>
+                        <td class="acciones-tabla">
+                            <a href="{% url 'editar_categoria' categoria.pk %}" class="boton boton-pequeno">
+                                Modificar
+                            </a>
+
+                            <a href="{% url 'eliminar_categoria' categoria.pk %}" class="boton boton-pequeno boton-peligro">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+
+        <div class="mensaje">
+            <p>Todavía no hay categorías registradas.</p>
+            <p>Utiliza el botón "Nueva categoría" para agregar la primera.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

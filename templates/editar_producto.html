@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Editar producto
+{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <h2>Editar producto</h2>
+    <p class="texto-ayuda">Modifica la información de <strong>{{ producto.nombre }}</strong>.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ formulario.as_p }}
+
+        <div class="acciones">
+            <button type="submit" class="boton">
+                Guardar cambios
+            </button>
+
+            <a href="{% url 'lista_productos' %}" class="boton boton-secundario">
+                Cancelar
+            </a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

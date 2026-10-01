@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Registrar producto
+{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <h2>Registrar nuevo producto</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ formulario.as_p }}
+
+        <div class="acciones">
+            <button type="submit" class="boton">
+                Guardar producto
+            </button>
+
+            <a href="{% url 'lista_productos' %}" class="boton boton-secundario">
+                Regresar al listado
+            </a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}
